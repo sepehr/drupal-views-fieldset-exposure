@@ -1,0 +1,6 @@
+; $Id$
+name = "Views Exposed in Fieldset"
+description = "Moves the exposed filter fields in a wrapper fieldset."
+core = 6.x
+package = Views
+dependencies[] = views
