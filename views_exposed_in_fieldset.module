@@ -12,7 +12,7 @@
 function views_exposed_in_fieldset_form_alter(&$form, $form_state, $form_id) {
   if ($form_id == 'views_exposed_form' && arg(1) != 'build' && arg(2) != 'views') {  
     // Add the CSS file.
-    drupal_add_css(drupal_get_path('module', 'views_exposed_in_fieldset') . '/css/exposed-in-fieldset.css', 'module');
+    drupal_add_css(drupal_get_path('module', 'views_exposed_in_fieldset') . '/css/views-exposed-in-fieldset.css', 'module');
     
     // New fieldset element to be built.
     $fieldset = $form_id . '_fieldset';
