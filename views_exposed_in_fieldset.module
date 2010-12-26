@@ -42,6 +42,7 @@ function views_exposed_in_fieldset_form_alter(&$form, $form_state, $form_id) {
   }
 }
 
+
 /**
  * Helper function to refine $form array keys.
  *
@@ -55,6 +56,7 @@ function _views_exposed_in_fieldset_refine($form) {
   $form = element_children($form);
   return array_filter($form, '_views_exposed_in_fieldset_filter');
 }
+
 
 /**
  * Helper callback to remove necessary keys from a refined array.
