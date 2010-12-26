@@ -4,6 +4,8 @@
 /**
  * @file
  * Implementation of necessary hooks and module helper functions.
+ *
+ * @todo Add a administrative page with options to filter views by name or disply.
  */
 
 /**
