@@ -5,7 +5,7 @@
  * @file
  * Implementation of necessary hooks and module helper functions.
  *
- * @todo Add a administrative page with options to filter views by name or display.
+ * @todo Add an administrative page with options to filter views by name or display.
  */
 
 /**
@@ -14,7 +14,7 @@
 function views_fieldset_exposure_form_alter(&$form, $form_state, $form_id) {
   if ($form_id == 'views_exposed_form' && arg(1) != 'build' && arg(2) != 'views') {
     // Add the CSS file.
-    drupal_add_css(drupal_get_path('module', 'views_fieldset_exposure') . '/css/views-exposed-in-fieldset.css', 'module');
+    drupal_add_css(drupal_get_path('module', 'views_fieldset_exposure') . '/views_fieldset_exposure.css', 'module');
 
     // New fieldset element to be built.
     $fieldset = $form_id . '_fieldset';
