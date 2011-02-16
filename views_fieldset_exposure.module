@@ -9,39 +9,37 @@
  */
 
 /**
- * Implementation of hook_form_alter().
+ * Implements hook_form_alter() for views_exposed_form.
  */
-function views_fieldset_exposure_form_alter(&$form, $form_state, $form_id) {
-  if ($form_id == 'views_exposed_form' && arg(1) != 'build' && arg(2) != 'views') {
-    // Add the CSS file.
-    drupal_add_css(drupal_get_path('module', 'views_fieldset_exposure') . '/views_fieldset_exposure.css', 'module');
+function views_fieldset_exposure_form_views_exposed_form_alter(&$form, $form_state) {
+  // Add the CSS file.
+  drupal_add_css(drupal_get_path('module', 'views_fieldset_exposure') . '/views_fieldset_exposure.css', 'module');
 
-    // New fieldset element to be built.
-    $fieldset = $form_id . '_fieldset';
+  // New fieldset element to be built.
+  $fieldset = $form_id . '_fieldset';
 
-    // Get those fieldkeys we need to move.
-    $fields = _views_fieldset_exposure_refine($form, $form_id);
+  // Get those fieldkeys we need to move.
+  $fields = _views_fieldset_exposure_refine($form, $form_id);
 
-    // Build the new fieldset.
-    $form[$fieldset] = array(
-      '#type' => 'fieldset',
-      '#title' => t('Filter Results'),
-      '#collapsible' => TRUE,
-      '#collapsed' => TRUE,
-    );
+  // Build the new fieldset.
+  $form[$fieldset] = array(
+    '#type' => 'fieldset',
+    '#title' => t('Filter Results'),
+    '#collapsible' => TRUE,
+    '#collapsed' => TRUE,
+  );
 
-    // Move the keys to the new fieldset.
-    foreach ($fields as $field) {
-      $form[$fieldset][$field] = $form[$field];
-      unset($form[$field]);
-    }
-
-    // Move field labels from [#info] array and flush.
-    foreach ($form['#info'] as $key => $info) {
-      $form[$fieldset][$info['value']]['#title'] = $form[$fieldset][$info['operator']]['#title'] = $info['label'];
-    }
-    $form['#info'] = array();
+  // Move the keys to the new fieldset.
+  foreach ($fields as $field) {
+    $form[$fieldset][$field] = $form[$field];
+    unset($form[$field]);
   }
+
+  // Move field labels from [#info] array and flush.
+  foreach ($form['#info'] as $key => $info) {
+    $form[$fieldset][$info['value']]['#title'] = $form[$fieldset][$info['operator']]['#title'] = $info['label'];
+  }
+  $form['#info'] = array();
 }
 
 /**
