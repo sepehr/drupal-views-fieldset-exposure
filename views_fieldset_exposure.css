@@ -4,7 +4,7 @@
  * @file
  * Applies quick dirty hacks to fix some exposed fieldset issues.
  */
- 
+
 .views-exposed-form .views-exposed-widget {
   width: 100%;
 }
